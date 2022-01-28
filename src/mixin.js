@@ -6,6 +6,8 @@ export default function (Vue) {
   } else {
     // override init and inject vuex init procedure
     // for 1.x backwards compatibility.
+    // 重写 init 并注入 vuex init 过程
+     // 1.x 向后兼容。
     const _init = Vue.prototype._init
     Vue.prototype._init = function (options = {}) {
       options.init = options.init
@@ -17,6 +19,7 @@ export default function (Vue) {
 
   /**
    * Vuex init hook, injected into each instances init hooks list.
+   * * Vuex 初始化钩子，注入到每个实例的初始化钩子列表中。
    */
 
   function vuexInit () {

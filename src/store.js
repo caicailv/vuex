@@ -10,6 +10,10 @@ export class Store {
     // Auto install if it is not done yet and `window` has `Vue`.
     // To allow users to avoid auto-installation in some cases,
     // this code should be placed here. See #731
+
+    // 如果尚未完成并且 `window` 有 `Vue`，则自动安装。
+     // 为了让用户在某些情况下避免自动安装，
+     // 这段代码应该放在这里。 见#731
     if (!Vue && typeof window !== 'undefined' && window.Vue) {
       install(window.Vue)
     }
@@ -59,10 +63,15 @@ export class Store {
     // init root module.
     // this also recursively registers all sub-modules
     // and collects all module getters inside this._wrappedGetters
+    // 初始化根模块。
+     // 这也递归注册所有子模块
+     // 并收集 this._wrappedGetters 中的所有模块 getter
     installModule(this, state, [], this._modules.root)
 
     // initialize the store vm, which is responsible for the reactivity
     // (also registers _wrappedGetters as computed properties)
+    // 初始化 store vm，它负责响应性
+     //（也将 _wrappedGetters 注册为计算属性）
     resetStoreVM(this, state)
 
     // apply plugins
