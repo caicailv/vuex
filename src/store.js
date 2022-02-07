@@ -240,11 +240,13 @@ function resetStoreVM (store, state, hot) {
   const oldVm = store._vm
 
   // bind store public getters
+  // 绑定存储公共 getter
   store.getters = {}
   const wrappedGetters = store._wrappedGetters
   const computed = {}
   forEachValue(wrappedGetters, (fn, key) => {
     // use computed to leverage its lazy-caching mechanism
+    //使用computed来利用其延迟缓存机制
     computed[key] = () => fn(store)
     Object.defineProperty(store.getters, key, {
       get: () => store._vm[key],
@@ -255,6 +257,9 @@ function resetStoreVM (store, state, hot) {
   // use a Vue instance to store the state tree
   // suppress warnings just in case the user has added
   // some funky global mixins
+// 使用 Vue 实例来存储状态树
+   // 禁止警告，以防用户添加
+   // 一些时髦的全局 mixin
   const silent = Vue.config.silent
   Vue.config.silent = true
   store._vm = new Vue({
@@ -266,6 +271,7 @@ function resetStoreVM (store, state, hot) {
   Vue.config.silent = silent
 
   // enable strict mode for new vm
+  // 为新虚拟机启用严格模式
   if (store.strict) {
     enableStrictMode(store)
   }
