@@ -372,6 +372,8 @@ function makeLocalContext (store, namespace, path) {
 
   // getters and state object must be gotten lazily
   // because they will be changed by vm update
+  // getter 和 state 对象必须是惰性获取
+   // 因为它们会被 vm update 改变
   Object.defineProperties(local, {
     getters: {
       get: noNamespace

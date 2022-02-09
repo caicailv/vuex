@@ -99,7 +99,7 @@ function normalizeNamespace (fn) {
   return (namespace, map) => {
     if (typeof namespace !== 'string') {
       map = namespace
-      namespace = ''
+        = ''
     } else if (namespace.charAt(namespace.length - 1) !== '/') {
       namespace += '/'
     }
